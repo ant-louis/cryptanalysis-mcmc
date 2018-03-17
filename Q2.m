@@ -15,4 +15,4 @@ for i=1:time
     Graph(i,:) = ProbPi*Q^(i-1);
 end
 plot(Graph);
-clear t Graph ProbPi
+clear t Graph ProbPi time Ppit i 
