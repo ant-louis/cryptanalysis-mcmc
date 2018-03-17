@@ -1,3 +1,4 @@
+%ANSWER FOR THE Q2, must be called: seq1 ->TransMat then Q2
 %P(Xt = i)
 %uniform distribution
 ProbPi = [.25 .25 .25 .25];
