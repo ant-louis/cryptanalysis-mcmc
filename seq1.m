@@ -4,4 +4,4 @@ for i=1:length(seq)
     tmp(i) = seq(i);
 end
 seq = char(tmp);
-clear tmp
+clear tmp i
