@@ -15,5 +15,6 @@ for k = 1:T
     end
     SimuSeq(k) = letter;
 end
-
+% It works and can be verified as sum(SimuSeq == 4) is praticaly equal to
+% sum(seq == 'd')
 clear T k rnd letter
