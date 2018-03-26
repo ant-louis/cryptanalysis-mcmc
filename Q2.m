@@ -15,4 +15,7 @@ for i=1:time
     Graph(i,:) = ProbPi*Q^(i-1);
 end
 plot(Graph);
+xlabel('Step')
+ylabel('Probability')
+legend('a','b','c','d')
 clear t Graph ProbPi time Ppit i 
