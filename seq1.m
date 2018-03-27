@@ -1,1 +1,4 @@
-seq = 'adcacdadadadadcacdadcadbabadcadcadadcadcadcacadcdbadcadadadcdcdcadabadadbadadabadcdadadadbadcadcdbadcadbadadcadcadadcdcadadcdcadbabadcacadcadadadcadbadabadcadcadacadbabacadcadadadcdcadcdcdadcacadcdcda';
+seq = 'abcccccaaaaaaaaa';
+%seq = 'adcacdadadadadcacdadcadbabadcadcadadcadcadcacadcdcbadadadadcdcdcadabadadbadadabadcdadadadbadcadcdbadcadbadadcadcadadcdcadadcdcadbabadcacadcadadadcadbadabadcadcadacadbabacadcadadadcdcadcdcdadcacadcdcda';
+
+phat = mle('discrete uniform', seq)
