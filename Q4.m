@@ -1,6 +1,6 @@
 %Ask to simulate a realisation of the random sequence
 T = 200;% length of the sequence
-letter = rand([0 4]);
+letter = rand([0 4]);%La première lettre est choisie aléatoirement
 SimuSeq = zeros(1,T);
 for k = 1:T
     rnd = rand;
@@ -15,6 +15,14 @@ for k = 1:T
     end
     SimuSeq(k) = letter;
 end
-% It works and can be verified as sum(SimuSeq == 4) is praticaly equal to
-% sum(seq == 'd')
-clear T k rnd letter
+%On peut vérifié que le nombre de 'd' ou 'c' de la chaine créé est proche
+%de ce que l'on trouve dans la chaine donnée
+
+%On reconverti les nombres en letter
+res = char(zeros(size(SimuSeq)));
+res(SimuSeq==1) = 'a'; 
+res(SimuSeq==2) = 'b'; 
+res(SimuSeq==3) = 'c'; 
+res(SimuSeq==4) = 'd';
+SimuSeq = res;
+clear T k rnd letter res
