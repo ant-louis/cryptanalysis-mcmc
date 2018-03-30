@@ -1,6 +1,20 @@
+function [ SimuSeq ] = Q1_1_4( Q, piStat,  T )
+%Q1_1_4 Créé une chaine du même type que celle dictée par "seq1", pi0 est
+%la distribution stationnaire.
 %Ask to simulate a realisation of the random sequence
-T = 200;% length of the sequence
-letter = rand([0 4]);%La première lettre est choisie aléatoirement
+%La première lettre est choisie aléatoirement selon la distribution
+%uniforme
+rnd = rand;
+if rnd <piStat(1)
+        letter = 1;
+elseif rnd < piStat(2)
+        letter = 2;
+elseif rnd < piStat(3)
+        letter = 3;
+else
+        letter = 4;
+end
+
 SimuSeq = zeros(1,T);
 for k = 1:T
     rnd = rand;
@@ -25,4 +39,6 @@ res(SimuSeq==2) = 'b';
 res(SimuSeq==3) = 'c'; 
 res(SimuSeq==4) = 'd';
 SimuSeq = res;
-clear T k rnd letter res
+%
+end
+

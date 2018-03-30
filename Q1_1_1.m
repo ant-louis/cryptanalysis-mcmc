@@ -1,6 +1,7 @@
-%'seq1' doit etre appelle avant utilisation
-%Par définition de la méthode du maximum de vraisemblance
-%On applique a trouver la probabilité que a passe a une autre letter
+function [ Q, pi0 ] = Q1_1_1( seq )
+%Q1.1.1 Prend en argument la chaine de caractère et revoie la matrice de
+%transition Q et la distribution de probabilté pi0
+%   Detailed explanation goes here
 Q(1,1) = length(strfind(seq,'aa'))/(length(strfind(seq,'a'))-1);
 Q(1,2) = length(strfind(seq,'ab'))/(length(strfind(seq,'a'))-1);
 Q(1,3) = length(strfind(seq,'ac'))/(length(strfind(seq,'a'))-1);
@@ -31,3 +32,5 @@ pi0(1) = length(strfind(seq,'a'))/length(seq);
 pi0(2) = length(strfind(seq,'b'))/length(seq);
 pi0(3) = length(strfind(seq,'c'))/length(seq);
 pi0(4) = length(strfind(seq,'d'))/length(seq);
+
+end
