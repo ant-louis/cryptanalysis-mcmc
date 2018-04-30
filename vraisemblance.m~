@@ -12,8 +12,7 @@ P = pi0(strfind(symb,T(1)));
 
 
 for i = 2:strlength(T)
-    i
-    temp = (pi0*Q(i-1,i))
+    temp = (pi0*Q(i-1))
     P = P*temp(strfind(symb,T(i)));
 end
 end
