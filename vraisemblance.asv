@@ -10,7 +10,7 @@ T = char(lower(T)); %convert to char array
 %ProbabilitÃ© d'avoir la lettre T(1) comme premiÃ¨re lettre
 P = pi0(strfind(symb,T(1))); % initialement
 for i = 2:numel(T)
-    P = P*Q(strfind(symb,T(i-1)),strfind(symb,T(i))); % on extrait la probabilité 
+    P = P*Q(strfind(symb,T(i-1),strfind(symb,T(i)))); % on extrait la probabilité 
 end
 end
 

@@ -1,1 +1,1 @@
-symb = 'abcdefghijklmnopqrstuvwxyz,.''"-!?:;()[]';
+symb = 'abcdefghijklmnopqrstuvwxyz,.''"-!?:;()[] ';
