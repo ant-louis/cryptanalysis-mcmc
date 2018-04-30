@@ -10,10 +10,12 @@ T = char(lower(T)); %convert to char array
 %Probabilité d'avoir la lettre T(1) comme première lettre
 P = pi0(strfind(symb,T(1)));
 
+indice_prev = 1;
 
 for i = 2:strlength(T)
-    i
-    temp = (pi0*Q(i-1,i))
+    indice = strfind(symb,T(i))
+    temp = (pi0*Q(indice_prev,indice))
+    indice_prev = indice;
     P = P*temp(strfind(symb,T(i)));
 end
 end
