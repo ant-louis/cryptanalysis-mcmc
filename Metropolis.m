@@ -1,6 +1,17 @@
 function [prob_post, best_x] = Metropolis(T,pinit,Q)
     symbols;
     
+    %y est (pour le moment) une permutation deux lettres
+    %de la variable symb d'origine
+    %Plus tard, il faudra utiliser une loi, comme par exemple
+    %une gaussienne centrée en la valeur x(i-1)
+    % ====> Choix non définitif ici !
+    
+    %Cette dernière nous sert comme code de chiffrement/déchiffrement
+    %Le symbole qui a remplacé 'a' sera en y(1), celui qui a remplacé 'b'
+    %sera en y(2) etc...
+    
+
     %Nombres de valeurs satisfaisant le taux d'acceptation
     n = 10e4;
 
@@ -35,10 +46,10 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
             prob_post(i) = prob_post(i-1);
             x(i,:) = x(i-1,:);
         end        
-    end
+    end 
     
     
-    %Only keep non-zero probabilities values
+    %Only keep unique probability values
     prob_post =  unique(prob_post,'stable');
     best_x = char(x(n,:))
 end
