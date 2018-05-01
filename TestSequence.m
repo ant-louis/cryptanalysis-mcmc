@@ -3,7 +3,7 @@ clear all;
 load("Q.mat");
 load("pinit.mat");
 symbols;
-T = "Hello my friend"
+T = "Hello darkness my old friend"
 y = symb(randperm(length(symb)));
 Tcrypte = encrypt(T,y)
 [prob_post, best_x] = Metropolis(Tcrypte,pinit,Q);
