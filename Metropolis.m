@@ -27,7 +27,7 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
     y = symb(randperm(length(symb)));
 
     for i=2:nbtours
-        i %Afficher l'iteration courante
+        %i %Afficher l'iteration courante
         %Taux d'acceptation
         u = rand;
         % Permuter 2 lettres, choisie aleatoirement
@@ -36,7 +36,7 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
         temp = y(iChange1);
         y(iChange1) = y(iChange2);
         y(iChange2) = temp;
-        y
+        
         %Probabilité avec permutation aléatoire de symb (y)
         prob_post_y = vraisemblance(T,pinit,Q,y);
         
