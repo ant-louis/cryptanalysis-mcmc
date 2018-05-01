@@ -1,5 +1,0 @@
-function [T_rand] = Q2_4(T)
-
-
-T_rand = T(randperm(length(T)))
-end;

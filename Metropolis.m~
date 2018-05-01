@@ -1,4 +1,4 @@
-function [prob_post, best_x] = Q2_5(T,pinit,Q)
+function [prob_post, best_x] = Metropolis(T,pinit,Q)
     symbols;
     
     %y est (pour le moment) une permutation deux lettres
@@ -12,7 +12,7 @@ function [prob_post, best_x] = Q2_5(T,pinit,Q)
     %sera en y(2) etc...
     
     %Nombres de valeurs satisfaisant le taux d'acceptation
-    nbtours = 10000;
+    nbtours = 5000;
 
     %Probabilité a postériori
     prob_post = zeros(nbtours,1);
@@ -28,21 +28,22 @@ function [prob_post, best_x] = Q2_5(T,pinit,Q)
 
     for i=2:nbtours
         i %Afficher l'iteration courante
-        %Taux d'acceptation
-        u = rand;
+        
         % Permuter 2 lettres, choisie aleatoirement
         iChange1 = randi([1 40]); % choisi un indice aleatoirement
         iChange2 = randi([1 40]);
         temp = y(iChange1);
         y(iChange1) = y(iChange2);
         y(iChange2) = temp;
-        
+        y
         %Probabilité avec permutation aléatoire de symb (y)
         prob_post_y = vraisemblance(T,pinit,Q,y);
         
         alpha_temp = prob_post_y/prob_post(i-1);
+        %Taux d'acceptation
+        u = rand;
         
-        if(u < alpha_temp)
+        if(u <= alpha_temp)
             x(i,:) = char(y);
             prob_post(i) = prob_post_y;
             alpha(i) = alpha_temp;
@@ -55,7 +56,6 @@ function [prob_post, best_x] = Q2_5(T,pinit,Q)
     
     
     %Only keep non-zero probabilities values
-    prob_post =  unique(prob_post,'stable');
-    x(nbtours,:)
-    best_x = char(x(nbtours,:));
+    prob_post =  log(unique(prob_post,'stable'));
+    best_x = char(x(nbtours,:))
 end
