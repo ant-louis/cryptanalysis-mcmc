@@ -54,6 +54,7 @@ function [prob_post, best_x] = Q2_5(T,pinit,Q)
     
     
     %Only keep non-zero probabilities values
-    prob_post(prob_post==0) = [];
-    best_x = x(nbtours,:);
+    prob_post =  unique(prob_post,'stable');
+    x(nbtours,:)
+    best_x = char(x(nbtours,:));
 end
