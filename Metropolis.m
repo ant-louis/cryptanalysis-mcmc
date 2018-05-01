@@ -1,7 +1,6 @@
 function [prob_post, best_x] = Metropolis(T,pinit,Q)
     symbols;
     
-<<<<<<< HEAD
     %y est (pour le moment) une permutation deux lettres
     %de la variable symb d'origine
     %Plus tard, il faudra utiliser une loi, comme par exemple
