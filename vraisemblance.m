@@ -8,7 +8,7 @@ function [ P ] = vraisemblance(T, pi0, Q, symb)
 T = char(lower(T)); %convert to char array
 
 %Probabilité d'avoir la lettre T(1) comme première lettre
-P = log(pi0(strfind(symb,T(1)))); % initialement
+P = (pi0(strfind(symb,T(1)))) % initialement
 
 for i = 2:numel(T)
     P = P + log(Q(strfind(symb,T(i-1)),strfind(symb,T(i)))); % on extrait la probabilit� 
