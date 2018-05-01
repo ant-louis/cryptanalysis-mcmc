@@ -28,7 +28,7 @@ function [prob_post, best_x] = Q2_4(T,pinit,Q)
     i = 2;
     while(i < nbtours)
        %y = uniPtheta(symb);
-        y = symb(randperm(length(symb)));
+        y = symb(randperm(length(symb)))
         %Probabilité avec permutation aléatoire de symb (y)
         prob_post_y = vraisemblance(T,pinit,Q,y);
         
@@ -36,7 +36,7 @@ function [prob_post, best_x] = Q2_4(T,pinit,Q)
         
         if(u < alpha_temp)
             x(i) = string(y);
-            prob_post(i) = prob_post_y
+            prob_post(i) = prob_post_y;
             alpha(i) = alpha_temp;
             i = i +1
  %       else
@@ -51,4 +51,3 @@ function [prob_post, best_x] = Q2_4(T,pinit,Q)
 
     best_x = x(nbtours-1);
 end
-
