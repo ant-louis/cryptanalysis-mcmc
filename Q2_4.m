@@ -51,3 +51,4 @@ function [prob_post, best_x] = Q2_4(T,pinit,Q)
 
     best_x = x(nbtours-1);
 end
+
