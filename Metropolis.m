@@ -31,8 +31,7 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
     %Critère de convergence
     NoChange = 0;
     
-    i = 2;
-    while(NoChange < 10 | i < n)
+    for i=2:n
         %Afficher la progression de l'algorithme courante
         if(mod(i,100) == 0)
             i
@@ -61,19 +60,19 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
         else
             prob_post(i) = prob_post(i-1);
             x(i,:) = x(i-1,:);
-            NoChange = NoChange + 1;
+            NoChange = NoChange + 1
         end  
-        i = i + 1;
-        
+
+        if NoChange > 2
+            break;
+        end
     end 
     
     
     %Only keep unique probability values
-%     _______HERE_CHANGE_________
-%     prob_post =  unique(prob_post,'stable');
-%     best_x = char(x(n,:));
+     prob_post =  unique(prob_post,'stable');
+     best_x = char(x(i,:))
     %Choosing the best key -> higher score function
-    IndexMax = find(prob_post == max(prob_post),1);
-    best_x = char(x(IndexMax,:));
-%     ____________________________
+%     IndexMax = find(prob_post == max(prob_post),1);
+%     best_x = char(x(IndexMax,:));
 end
