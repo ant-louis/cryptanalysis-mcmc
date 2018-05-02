@@ -18,7 +18,6 @@ Q = Q +1 ;
 P = log(pi0(strfind(symb,T(1)))); % Initialement
 for i = 2:numel(T)
     P = P + log(Q(strfind(symb,T(i-1)),strfind(symb,T(i)))); 
-
 end
 end
 

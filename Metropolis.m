@@ -1,5 +1,5 @@
 function [prob_post, best_x] = Metropolis(T,pinit,Q)
-    symbols;
+    symbols; %Import symbols
     
     %y est (pour le moment) une permutation deux lettres
     %de la variable symb d'origine
@@ -13,7 +13,7 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
     
 
     %Nombres de valeurs satisfaisant le taux d'acceptation
-    n = 10e4;
+    n = 50000;
 
     %Probabilité a postériori
     prob_post = zeros(n,1);
@@ -25,7 +25,7 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
     y = symb(randperm(length(symb)));
 
     for i=2:n
-        i %Afficher l'iteration courante
+        %i %Afficher l'iteration courante
         
         % Permuter 2 lettres, choisie aleatoirement
         iChange1 = randi([1 40]); % choisi un indice aleatoirement
@@ -39,7 +39,7 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
         
         alpha = prob_post_y/prob_post(i-1);
         
-        if(rand <= min(1, alpha))
+        if(rand < min(1, alpha))
             prob_post(i) = prob_post_y;
             x(i,:) = char(y);
         else
