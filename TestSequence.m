@@ -3,7 +3,7 @@ clear all;
 load('Q.mat');
 load('pinit.mat');
 symbols;
-T = 'The news that a wealthy young gentleman named Charles Bingley has rented the manor known as Netherfield Park causes a great stir in the neighboring village of Longbourn, especially in the Bennet household. The Bennets have five unmarried daughters, and Mrs. Bennet, a foolish and fussy gossip, is the sort who agrees with the novelís opening words. At the end of the evening, the Bennet women return to their house, where Mrs. Bennet regales her husband with stories from the evening until he insists that she be silent. Upstairs, Jane relates to Elizabeth her surprise that Bingley danced with her twice, and Elizabeth replies that Jane is unaware of her own beauty. Both girls agree that Bingleyís sisters are not well-mannered, but whereas Jane insists that they are charming in close conversation, Elizabeth continues to harbor a dislike for them.'
+T='Few people would choose a prison as the location for a special evening out. However, Italy has launched its first restaurant to be located in a real jail.  At the Ingalera Restaurant in Bollate prison, Milan, there are four prisoners working as waiters and five others cooking in the kitchen, headed by a professional chef and a ma√Ætre. It is a ground-breaking project, which allows prisoners to be gradually included into society. The reataurant has had great reviews: everyone says the food is worth going to prison for.'
 y = symb(randperm(length(symb)));
 Tcrypte = encrypt(T,y)
 [prob_post, best_x] = Metropolis(Tcrypte,pinit,Q);
