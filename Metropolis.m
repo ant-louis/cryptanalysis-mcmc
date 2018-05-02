@@ -14,7 +14,7 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
 
     %Nombres de valeurs satisfaisant le taux d'acceptation
 
-    n = 100000;
+    n = 10000;
 
     %Probabilité a postériori
     prob_post = zeros(n,1);
@@ -24,26 +24,27 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
      
     prob_post(1) = vraisemblance(T,pinit,Q,symb);
     y = symb(randperm(length(symb)));
-    %Pour la proposition de distribution------
+    %Pour la proposition de distribution
     [PiCry] = letterFrequency(T);
     [PiInf] = englishFrequency(pinit,Q);
-    %-----------------------------------------
 
-    %_______CHANGE of convergence__________
+    %Critère de convergence
     NoChange = 0;
-   % for i=2:n
-   i = 2;
-   while(NoChange < 10 || i < n)
-        %i %Afficher l'iteration courante
+    
+    i = 2;
+    while(NoChange < 10 | i < n)
+        %Afficher la progression de l'algorithme courante
+        if(mod(i,100) == 0)
+            i
+        end
         
         % Permuter 2 lettres, choisie aleatoirement
-        iChange1 = randi([1 40]); % choisi un indice aleatoirement
+        iChange1 = randi([1 40]); 
         iChange2 = randi([1 40]);
         temp = y(iChange1);
         y(iChange1) = y(iChange2);
         y(iChange2) = temp;
 
-        
         %Prendre une nouvelle distribution
         %[y,PiCry] = propDist(PiInf,PiCry,y);
         
@@ -63,6 +64,7 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
             NoChange = NoChange + 1;
         end  
         i = i + 1;
+        
     end 
     
     
