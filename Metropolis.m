@@ -13,7 +13,8 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
     
 
     %Nombres de valeurs satisfaisant le taux d'acceptation
-    n = 100000;
+
+    n = 10000;
 
     %Probabilité a postériori
     prob_post = zeros(n,1);
@@ -27,10 +28,15 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
 
     %_______CHANGE of convergence__________
    NoChange = 0;
+   
    for i=2:n
+       %Afficher la progression de l'algorithme courante
+        if(mod(i,100) == 0)
+            i
+        end
         
         % Permuter 2 lettres, choisie aleatoirement
-        iChange1 = randi([1 40]); % choisi un indice aleatoirement
+        iChange1 = randi([1 40]); 
         iChange2 = randi([1 40]);
         temp = y(iChange1);
         y(iChange1) = y(iChange2);
@@ -49,18 +55,17 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
         else
             prob_post(i) = prob_post(i-1);
             x(i,:) = x(i-1,:);
-            NoChange = NoChange + 1;
+            NoChange = NoChange + 1
         end  
-        
-        if(NoChange == 10)
-            disp('stop because nochange');
+
+        if NoChange > 2
             break;
         end
-   end
+    end 
     
     
     %Only keep unique probability values
-    prob_post =  unique(prob_post,'stable');
-    best_x = char(x(n,:));
-    
+     prob_post =  unique(prob_post,'stable');
+     best_x = char(x(i,:))
+
 end
