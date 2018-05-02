@@ -10,14 +10,14 @@ T = char(lower(T)); %convert to char array
 
 %On fait  + 1 partout pour ne pas avoir de problèmes avec de 0
 pi0 = pi0 + 1;
-Q = Q +1 ;
+Q = log(Q +1);
 
 %On fait nos calculs en log pour ne pas avoir des erreurs dû aux
 %limitations de l'ordinateur en terme de calcul numérique
 
 P = log(pi0(strfind(symb,T(1)))); % Initialement
 for i = 2:numel(T)
-    P = P + log(Q(strfind(symb,T(i-1)),strfind(symb,T(i)))); 
+    P = P + Q(strfind(symb,T(i-1)),strfind(symb,T(i))); 
 end
 end
 
