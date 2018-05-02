@@ -23,24 +23,17 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
      
     prob_post(1) = vraisemblance(T,pinit,Q,symb);
     y = symb(randperm(length(symb)));
-    %Pour la proposition de distribution------
-    [PiCry] = letterFrequency(T);
-    [PiInf] = englishFrequency(pinit,Q);
-    %-----------------------------------------
+    
     for i=2:n
         i %Afficher l'iteration courante
 
-%         % Permuter 2 lettres, choisie aleatoirement
-%         iChange1 = randi([1 40]); % choisi un indice aleatoirement
-%         iChange2 = randi([1 40]);
-%         temp = y(iChange1);
-%         y(iChange1) = y(iChange2);
-%         y(iChange2) = temp;
-        
-        %Prendre une nouvelle distribution
-        [y,PiCry] = propDist(PiInf,PiCry,y);
-        
-        
+        % Permuter 2 lettres, choisie aleatoirement
+        iChange1 = randi([1 40]); % choisi un indice aleatoirement
+        iChange2 = randi([1 40]);
+        temp = y(iChange1);
+        y(iChange1) = y(iChange2);
+        y(iChange2) = temp;
+
         %Probabilité avec permutation aléatoire de symb (y)
         prob_post_y = vraisemblance(T,pinit,Q,y);
         
