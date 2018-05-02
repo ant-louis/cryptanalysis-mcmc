@@ -1,5 +1,5 @@
 function [prob_post, best_x] = Metropolis(T,pinit,Q)
-    symbols;
+    symbols; %Import symbols
     
     %y est (pour le moment) une permutation deux lettres
     %de la variable symb d'origine
@@ -13,7 +13,8 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
     
 
     %Nombres de valeurs satisfaisant le taux d'acceptation
-    n = 10000;
+
+    n = 100000;
 
     %Probabilité a postériori
     prob_post = zeros(n,1);
@@ -27,6 +28,7 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
     [PiCry] = letterFrequency(T);
     [PiInf] = englishFrequency(pinit,Q);
     %-----------------------------------------
+
     %_______CHANGE of convergence__________
     NoChange = 0;
    % for i=2:n
@@ -40,6 +42,7 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
         temp = y(iChange1);
         y(iChange1) = y(iChange2);
         y(iChange2) = temp;
+
         
         %Prendre une nouvelle distribution
         %[y,PiCry] = propDist(PiInf,PiCry,y);
@@ -50,7 +53,7 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
         
         alpha = prob_post_y/prob_post(i-1);
         
-        if(rand <= min(1, alpha))
+        if(rand < min(1, alpha))
             prob_post(i) = prob_post_y;
             x(i,:) = char(y);
             NoChange = 0;
