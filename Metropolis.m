@@ -13,6 +13,7 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
     
 
     %Nombres de valeurs satisfaisant le taux d'acceptation
+
     n = 100000;
 
     %Probabilité a postériori
@@ -23,10 +24,15 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
      
     prob_post(1) = vraisemblance(T,pinit,Q,symb);
     y = symb(randperm(length(symb)));
-    
-    for i=2:n
-        i %Afficher l'iteration courante
 
+
+    %_______CHANGE of convergence__________
+    NoChange = 0;
+   % for i=2:n
+   i = 2;
+   while(NoChange < 10 || i < n)
+        %i %Afficher l'iteration courante
+        
         % Permuter 2 lettres, choisie aleatoirement
         iChange1 = randi([1 40]); % choisi un indice aleatoirement
         iChange2 = randi([1 40]);
@@ -34,6 +40,11 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
         y(iChange1) = y(iChange2);
         y(iChange2) = temp;
 
+
+        %Prendre une nouvelle distribution
+        %[y,PiCry] = propDist(PiInf,PiCry,y);
+        
+        
         %Probabilité avec permutation aléatoire de symb (y)
         prob_post_y = vraisemblance(T,pinit,Q,y);
         
@@ -42,14 +53,22 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
         if(rand < min(1, alpha))
             prob_post(i) = prob_post_y;
             x(i,:) = char(y);
+            NoChange = 0;
         else
             prob_post(i) = prob_post(i-1);
             x(i,:) = x(i-1,:);
-        end        
+            NoChange = NoChange + 1;
+        end  
+        i = i + 1;
     end 
     
     
     %Only keep unique probability values
-    prob_post =  unique(prob_post,'stable');
-    best_x = char(x(n,:))
+%     _______HERE_CHANGE_________
+%     prob_post =  unique(prob_post,'stable');
+%     best_x = char(x(n,:));
+    %Choosing the best key -> higher score function
+    IndexMax = find(prob_post == max(prob_post),1);
+    best_x = char(x(IndexMax,:));
+%     ____________________________
 end
