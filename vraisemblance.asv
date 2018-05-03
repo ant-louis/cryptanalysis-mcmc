@@ -9,8 +9,10 @@ function [ P ] = vraisemblance(T, pi0, Q, symb)
 T = char(lower(T)); %convert to char array
 
 %On fait  + 1 partout pour ne pas avoir de problèmes avec de 0
-pi0 = log(pi0 + exp(-15));
-Q = log(Q + exp(-15));
+% pi0 = log(pi0 + 10e-12);
+% Q = log(Q + 10e-12);
+pi0 = log(pi0 + exp(-12));
+Q = log(Q + e);
 %On fait nos calculs en log pour ne pas avoir des erreurs dû aux
 %limitations de l'ordinateur en terme de calcul numérique
 
