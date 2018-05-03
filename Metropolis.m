@@ -58,7 +58,7 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
             NoChange = NoChange + 1
         end  
 
-        if NoChange > 2
+        if NoChange > 3
             break;
         end
     end 
