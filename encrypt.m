@@ -2,6 +2,7 @@
 
 function [Tcrypte] = encrypt(T,y)
 symbols;
+%symb ='abc';
 T = char(lower(T)); %Make sure it's a char array
 Tcrypte = '';
 for i=1: numel(T)

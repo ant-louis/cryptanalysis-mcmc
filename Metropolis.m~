@@ -33,7 +33,7 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
         %Probabilité avec permutation aléatoire de symb (y)
         prob_post_y = vraisemblance(T,pinit,Q,y);
         
-        alpha = exp(prob_post_y - prob_post(i-1));
+        alpha = exp(abs(prob_post_y - prob_post(i-1)));
         
         if(rand < min(1, alpha))
             prob_post(i) = prob_post_y;
@@ -46,19 +46,20 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
 
         %Afficher la progression de l'algorithme courante
         if(mod(i,100) == 0)
-            fprintf('Tour %d\n', i);
-            fprintf('Permutation= %s\n', char(x(i,:)));
-            fprintf('prob= %f\n', prob_post_y);
-            fprintf('Alpha= %f\n\n', alpha);
+            disp(i);
+            disp(char(x(i,:)));
+            disp('
+            disp(alpha);
         end
         
         
 
    end 
    
+    
    %Only keep unique probability values
    prob_post =  unique(prob_post,'stable');
    best_x = char(x(i,:));
-   fprintf('\nNb changements= %d\n', change);
+   disp(change);
 
 end
