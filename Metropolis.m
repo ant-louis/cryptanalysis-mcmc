@@ -43,22 +43,20 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
             prob_post(i) = prob_post(i-1);
             x(i,:) = x(i-1,:);
         end  
-
+                 
         %Afficher la progression de l'algorithme courante
         if(mod(i,100) == 0)
-            fprintf('Tour %d\n', i);
+            fprintf('Iter %d\n', i);
             fprintf('Permutation= %s\n', char(x(i,:)));
             fprintf('prob= %f\n', prob_post_y);
             fprintf('Alpha= %f\n\n', alpha);
         end
         
-        
-
    end 
    
    %Only keep unique probability values
    prob_post =  unique(prob_post,'stable');
    best_x = char(x(i,:));
    fprintf('\nNb changements= %d\n', change);
-
+   
 end
