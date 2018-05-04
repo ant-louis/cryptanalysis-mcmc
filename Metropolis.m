@@ -51,7 +51,7 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
         %Probabilité avec permutation aléatoire de symb (y)
         prob_post_y = vraisemblance(T,pinit,Q,y);
         
-        alpha = prob_post_y/prob_post(i-1);
+        alpha = exp(prob_post_y - prob_post(i-1));
         
         if(rand < min(1, alpha))
             prob_post(i) = prob_post_y;
@@ -60,12 +60,12 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
         else
             prob_post(i) = prob_post(i-1);
             x(i,:) = x(i-1,:);
-            NoChange = NoChange + 1
+            NoChange = NoChange + 1;
         end  
 
-        if NoChange > 2
-            break;
-        end
+%        if NoChange > 2
+%            break;
+%        end
     end 
     
     

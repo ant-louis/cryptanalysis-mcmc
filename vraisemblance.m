@@ -8,7 +8,7 @@
 function [ P ] = vraisemblance(T, pinit, Q, symb)
 T = char(lower(T)); %convert to char array
 
-%On fait  + 1 partout pour ne pas avoir de problèmes avec de 0
+%On fait  + 10e-12 partout pour ne pas avoir de problèmes avec de 0
 pinit = log(pinit + 10e-12);
 Q = log(Q + 10e-12);
 
