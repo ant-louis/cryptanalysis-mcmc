@@ -10,4 +10,4 @@ Tcrypte = encrypt(T,y)
 [prob_post, best_x] = Metropolis(Tcrypte,pinit,Q);
 T_chap = decrypt(Tcrypte,best_x);
 symbolCorrect = CorrectLetter(y,best_x);
-fprintf('\n_________\nBest_x: %s\nT_chap: %s\nNombre de symbole decrypte: %d\n',best_x,T_chap,symbolCorrect);
+fprintf('\n_________\nBest_x: %6.s\nT_chap: %6.s\nNombre de symbole decrypte: %6.f\n',best_x,T_chap,symbolCorrect);

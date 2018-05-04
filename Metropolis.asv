@@ -69,6 +69,6 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
     
     %Only keep unique probability values
      prob_post =  unique(prob_post,'stable');
-     best_x = char(x(i,:));
+     best_x = char(x(i,:))
      
 end
