@@ -58,7 +58,7 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
             NoChange = NoChange + 1;
         end  
                  if(mod(i,100) == 0)
-                     fprintf('-------\nIteration: %6.f\nalpha: %6.2f\nNoChange: %6.f\n',i,alpha,NoChange);
+                     fprintf('-------\nIteration: %d\nalpha: %e\nNoChange: %6.f\n',i,alpha,NoChange);
                  end
 
 %        if NoChange > 2
