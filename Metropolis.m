@@ -44,7 +44,7 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
             x(i,:) = x(i-1,:);
         end  
         %---Pour graphique de lettre correct en fonction de l'iteration
-        [nbCorrectLet(i), ~] = CorrectLetter(y,char(x(i,:)));
+        [nbCorrectLet(i), ~] = CorrectLetter('bacdefghijklmnopqrstuvwxyz,.''"-!?:;()[] ',char(x(i,:)));
         %---
         %Afficher la progression de l'algorithme courante
         if(mod(i,100) == 0)
