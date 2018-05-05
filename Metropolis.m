@@ -49,7 +49,7 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
             fprintf('Iter %d\n', i);
             fprintf('Permutation= %s\n', char(x(i,:)));
             fprintf('prob= %f\n', prob_post_y);
-            fprintf('Alpha= %f\n\n', alpha);
+            fprintf('Alpha= %e\n\n', alpha);
         end
         
    end 
