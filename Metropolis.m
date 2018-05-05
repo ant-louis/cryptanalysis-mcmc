@@ -20,7 +20,7 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
    prob_post(1) = vraisemblance(T,pinit,Q,y);
 
    change = 0;
-   
+   nbCorrectLet = zeros(n,1);
    for i=2:n
         
         % Permuter 2 lettres, choisie aleatoirement
@@ -43,7 +43,9 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
             prob_post(i) = prob_post(i-1);
             x(i,:) = x(i-1,:);
         end  
-                 
+        %---Pour graphique de lettre correct en fonction de l'iteration
+        [nbCorrectLet(i), ~] = CorrectLetter(y,char(x(i,:)));
+        %---
         %Afficher la progression de l'algorithme courante
         if(mod(i,100) == 0)
             fprintf('Iter %d\n', i);
@@ -53,6 +55,21 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
         end
         
    end 
+   %---Graphique de nombres de lettres correct en fonction de l'iteration
+   subplot(2,1,1)
+   plot(nbCorrectLet);
+   xlabel('iteration');
+   ylabel('Nombre de lettre correct');
+   title('Nb lettres correct/Iteration');
+   %----
+   
+   %---Graphique de nombres de lettres correct en fonction de l'iteration
+   subplot(2,1,2)
+   plot(prob_post);
+   xlabel('iteration');
+   ylabel('Probabilite a posteriori');
+   title('Probabilite a posteriori/Iteration');
+   %----
    
    %Only keep unique probability values
    prob_post =  unique(prob_post,'stable');
