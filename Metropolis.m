@@ -8,13 +8,13 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
    %sera en y(2) etc...
     
    %Nombres d'iterations
-   n = 10000;
+   n = 10e3;
 
    %Initialisation des variables
    y = symb(randperm(length(symb))); %Permutation alétoire des 40 symboles
     
    x = zeros(n,length(symb)); %Matrice des n permutations de y
-   x(1,:) = y;
+   x(1,:) = char(y);
     
    prob_post = zeros(n,1); %Probabilité a postériori
    prob_post(1) = vraisemblance(T,pinit,Q,y);
@@ -23,7 +23,10 @@ function [prob_post, best_x] = Metropolis(T,pinit,Q)
    
    for i=2:n
         
-        % Permuter 2 lettres, choisie aleatoirement
+        %Reprendre le y precedent
+        y=x(i-1,:); 
+        
+        %Permuter 2 lettres, choisies aleatoirement
         iChange1 = randi([1 40]); 
         iChange2 = randi([1 40]);
         temp = y(iChange1);

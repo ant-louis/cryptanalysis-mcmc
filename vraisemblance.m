@@ -15,6 +15,7 @@ function [ P ] = vraisemblance(T, pinit, Q, symb)
     %limitations de l'ordinateur en terme de calcul numérique
 
     P = pi0(strfind(symb,T(1))); % Initialement
+    
     for i = 2:numel(T)
         P = P +  Q(strfind(symb,T(i-1)), strfind(symb,T(i))); 
     end
