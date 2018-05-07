@@ -1,5 +1,5 @@
-function [y,PiCry] = propDist( PiInf, PiCry, y )
-%PROPDIST Summary of this function goes here
+function [y,PiCry] = initialKey( PiInf, PiCry, y )
+
 indice1 = randi([1 40]); %Index aleatoire
 freq = PiInf(indice1); %Frequence de la lettre choisie aleatoirement
 
