@@ -1,6 +1,7 @@
+% This method outputs the symbols and the total amount of symbols
+%symbols that are at the same index in Ch1 and Ch2
+% Ch1 and Ch2 have to be the same length
 function [ nbLet, letters ] = CorrectLetter( Ch1, Ch2 )
-    %CORRECTLETTER output the number of symb taht are the same in Ch1 and Ch2
-    %for same index, Ch1 and Ch2 shoould be the same length
 
     letters = '';
     nbLet = 0;
