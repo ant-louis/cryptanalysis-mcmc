@@ -1,6 +1,6 @@
 function [] = Q1_1_2( Q )
 %Q1_1_2 Représente les différents graphes de la question 1.1.2
-%distribution uniforme et donc aléatoire
+%distribution uniforme et donc aleatoire
 ProbPi = [.25 .25 .25 .25];
 %at t place in the sequence
 t=9;

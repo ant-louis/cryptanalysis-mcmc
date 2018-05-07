@@ -1,8 +1,7 @@
 function [ SimuSeq ] = Q1_1_4( Q, piStat,  T )
-%Q1_1_4 Créé une chaine du même type que celle dictée par "seq1", pi0 est
+%Q1_1_4 Cree une chaine du meme type que celle dictee par "seq1", pi0 est
 %la distribution stationnaire.
-%Ask to simulate a realisation of the random sequence
-%La première lettre est choisie aléatoirement selon la distribution
+%La premiere lettre est choisie aleatoirement selon la distribution
 %uniforme
 rnd = rand;
 if rnd <piStat(1)
@@ -29,8 +28,8 @@ for k = 1:T
     end
     SimuSeq(k) = letter;
 end
-%On peut vérifié que le nombre de 'd' ou 'c' de la chaine créé est proche
-%de ce que l'on trouve dans la chaine donnée
+%On peut verifie que le nombre de 'd' ou 'c' de la chaine cree est proche
+%de ce que l'on trouve dans la chaine donnee
 
 %On reconverti les nombres en letter
 res = char(zeros(size(SimuSeq)));
@@ -39,7 +38,7 @@ res(SimuSeq==2) = 'b';
 res(SimuSeq==3) = 'c'; 
 res(SimuSeq==4) = 'd';
 SimuSeq = res;
-%------------Comparaison sur les probabilités--------------------
+%------------Comparaison sur les probabilites--------------------
 PSimu = [sum(SimuSeq == 'a') sum(SimuSeq == 'b') sum(SimuSeq == 'c') sum(SimuSeq == 'd')];
 PSimu = PSimu./length(SimuSeq);
 disp(PSimu);

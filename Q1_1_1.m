@@ -1,12 +1,12 @@
 function [ Q, pi0 ] = Q1_1_1( seq )
 %Q1.1.1 Prend en argument la chaine de caractère et revoie la matrice de
-%transition Q et la distribution de probabilté pi0
-%   Detailed explanation goes here
+%transition Q et la distribution de probabilte pi0
+
 Q(1,1) = length(strfind(seq,'aa'))/(length(strfind(seq,'a'))-1);
 Q(1,2) = length(strfind(seq,'ab'))/(length(strfind(seq,'a'))-1);
 Q(1,3) = length(strfind(seq,'ac'))/(length(strfind(seq,'a'))-1);
 Q(1,4) = length(strfind(seq,'ad'))/(length(strfind(seq,'a'))-1);
-%on retire -1 car la premier letter est "a"
+%on retire -1 car la premier letter de la sequence est "a"
 
 %Pour b
 Q(2,1) = length(strfind(seq,'ba'))/length(strfind(seq,'b'));
