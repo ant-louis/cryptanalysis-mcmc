@@ -1,22 +1,25 @@
-function [y,PiCry] = initialKey( PiInf, PiCry, y )
 
-indice1 = randi([1 40]); %Index aleatoire
-freq = PiInf(indice1); %Frequence de la lettre choisie aleatoirement
+function [yfirst] = initialKey(Tcrypte,pinit,Q)
 
-%Indice de la lettre se rapprochant le plus de la frequence d'une autre
-%lettre dans la langue anglaise
-PiCry_temp = abs(PiCry - freq);
-indice2 = find(PiCry_temp == min(PiCry_temp),1);
+    symbols;
+    yfirst = zeros(1,40);
 
-%Echanger les deux lettres
-y_temp = y(indice1);
-y(indice1) = y(indice2);
-y(indice2) = y_temp;
+    PiStat = englishFrequency(pinit,Q);
+    PiCrypte = letterFrequency(Tcrypte);
 
-%Echanger les deux frequences
-PiCry_temp = PiInf(indice1);
-PiCry(indice1) = PiCry(indice2);
-PiCry(indice2) = PiCry_temp;
+    for i=1:40
 
+        freq = PiStat(i); %Frequence de la lettre i
+        %Indice de la lettre se rapprochant le plus de la frequence d'une autre
+        %lettre dans la langue anglaise
+        closestFreq = abs(PiCrypte - freq);
+        index = find(closestFreq == min(closestFreq),1);
+
+        %Echanger les deux lettres
+        yfirst(i) = symb(index);
+        PiCrypte(index)=[]; %Remove matching frequency
+        symb(index)=[]; %Remove matching symbol
+
+    end
 end
 

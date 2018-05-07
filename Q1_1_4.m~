@@ -49,5 +49,24 @@ function [ SimuSeq ] = Q1_1_4( Q, piStat, T )
     disp(PSimu);
     %----------------------------------------------------------------
     
+=======
+    SimuSeq(k) = letter;
+end
+%On peut verifie que le nombre de 'd' ou 'c' de la chaine cree est proche
+%de ce que l'on trouve dans la chaine donnee
+
+%On reconverti les nombres en letter
+res = char(zeros(size(SimuSeq)));
+res(SimuSeq==1) = 'a'; 
+res(SimuSeq==2) = 'b'; 
+res(SimuSeq==3) = 'c'; 
+res(SimuSeq==4) = 'd';
+SimuSeq = res;
+%------------Comparaison sur les probabilites--------------------
+PSimu = [sum(SimuSeq == 'a') sum(SimuSeq == 'b') sum(SimuSeq == 'c') sum(SimuSeq == 'd')];
+PSimu = PSimu./length(SimuSeq);
+disp(PSimu);
+%----------------------------------------------------------------
+>>>>>>> 5fb6e1efc433cb49d2019bc37de4b62f5fda6195
 end
 
