@@ -1,6 +1,6 @@
 %[Q2.4]Fonction prenant en argument un texte crypte, une loi de
-%distribution initiale et une matrice de transition et renvoyant une cle de
-%dechiffrement grace a l'algorithme de Metropolis-Hastings.
+%distribution initiale et une matrice de transition et renvoyant 
+%une cle de dechiffrement grace a l'algorithme de Metropolis-Hastings.
 
 function [probPost, best_key] = Metropolis(T,pinit,Q)
    
@@ -31,7 +31,7 @@ function [probPost, best_key] = Metropolis(T,pinit,Q)
         i2 = randi([1 40]);
         key([i1 i2]) = key([i2 i1]);
 
-        %Probabilité avec permutation aléatoire de symb (y)
+        %Probabilite avec permutation aleatoire de symb
         probKey = vraisemblance(T,pinit,Q,key);
         
         %Calcul converti car les prob sont des log
@@ -50,6 +50,7 @@ function [probPost, best_key] = Metropolis(T,pinit,Q)
         
    end 
    
+   %Cle de decryptage finale
    best_key = char(keyList(i,:));
    
 end

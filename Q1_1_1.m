@@ -1,5 +1,6 @@
-%[Q1.1.1] Prend en argument la chaine de caractere et renvoie la matrice de
-%transition Q et la distribution de probabilte pi0
+%[Q1.1.1] Prend en argument la chaine de caractere et renvoie la matrice
+%de transition Q et la distribution de probabilte pi0
+
 function [ Q, pi0 ] = Q1_1_1( seq )
 
     %Pour a

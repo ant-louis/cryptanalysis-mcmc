@@ -1,12 +1,15 @@
-%Fonction qui encrypte un texte T avec un code de chiffrement y
+%Fonction prenant en arguments un texte et une cle de cryptage et
+%renvoyant le texte crypte selon cette cle.
 
-function [Tcrypte] = encrypt(T,y)
-symbols;
-%symb ='abc';
-T = char(lower(T)); %Make sure it's a char array
-Tcrypte = '';
-for i=1: numel(T)
-    index = strfind(symb,T(i));
-    Tcrypte = [Tcrypte y(index)];
-end
+function [ Tcrypte ] = encrypt( T, key )
+
+    symbols;
+    T = char(lower(T));
+    Tcrypte = '';
+    
+    for i=1: numel(T)
+        index = strfind(symb,T(i));
+        Tcrypte = [Tcrypte key(index)];
+    end
+    
 end

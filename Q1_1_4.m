@@ -1,5 +1,5 @@
-%[Q1_1_4] Cree une chaine du meme type que celle dictee par "seq1", pi0 est
-%la distribution stationnaire.
+%[Q1_1_4] Cree une chaine du meme type que celle dictee par "seq1",
+%pi0 est la distribution stationnaire.
 
 function [ SimuSeq ] = Q1_1_4( Q, piStat, T )
 
@@ -16,7 +16,6 @@ function [ SimuSeq ] = Q1_1_4( Q, piStat, T )
     else
         letter = 4;
     end
-
 
     SimuSeq = zeros(1,T);
     for k = 1:T
@@ -43,11 +42,10 @@ function [ SimuSeq ] = Q1_1_4( Q, piStat, T )
     res(SimuSeq==4) = 'd';
     SimuSeq = res;
     
-    %------------Comparaison des probabilites--------------------
+    %Comparaison des probabilites
     PSimu = [sum(SimuSeq == 'a') sum(SimuSeq == 'b') sum(SimuSeq == 'c') sum(SimuSeq == 'd')];
     PSimu = PSimu./length(SimuSeq);
     disp(PSimu);
-    %----------------------------------------------------------------
     
 end
 

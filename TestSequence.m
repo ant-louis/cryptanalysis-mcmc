@@ -1,25 +1,27 @@
+%Script de test de l'algorithme en fonction de textes de longueurs
+%differentes
+
 clc;
 clear;
 load('Q.mat');
 load('pinit.mat');
 symbols;
 
-T = 'The news that a wealthy young gentleman named Charles Bingley has rented the manor known as Netherfield Park causes a great stir in the neighboring village of Longbourn';
-y = symb(randperm(length(symb)));
-Tcrypte = encrypt(T,y);
-[prob_post, best_x] = Metropolis(Tcrypte,pinit,Q);
-T_chap = decrypt(Tcrypte,best_x);
+T = ' ... ';%Plusieurs textes testes
+key = symb(randperm(length(symb)));
+Tcrypte = encrypt(T,key);
+[probPost, best_key] = Metropolis(Tcrypte,pinit,Q);
+Tdecrypt = decrypt(Tcrypte,best_key);
 
-%Affichage des résulats a la console
+%Affichage des resulats a la console
 fprintf('\n********************RESULTATS**************************\n');
-fprintf('Code de chiffrement trouve= %s\n', best_x);
-fprintf('Code de chiffrement attendu= %s\n', y);
-fprintf('Texte decrypte= %s\n',  T_chap);
+fprintf('Code de chiffrement trouve= %s\n', best_key);
+fprintf('Code de chiffrement attendu= %s\n', key);
+fprintf('Texte decrypte= %s\n',  Tdecrypt);
 fprintf('Texte original= %s\n', T);
 
 %Graphique des prob a posteriori en fonction de l'iteration
-%subplot(2,1,2)
-plot(prob_post);
+plot(probPost);
 xlabel('Iteration');
 ylabel('Probabilite a posteriori');
 title('Probabilite a posteriori/Iteration');

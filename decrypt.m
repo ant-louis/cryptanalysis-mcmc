@@ -1,13 +1,16 @@
-%Fonction qui decrypte un texte Tcrypte avec un code de chiffrement y
+%Fonction prenant en arguments un texte crypte et une cle de decryptage
+%renvoyant le texte decrypte selon cette cle.
 
-function [T_chap] = decrypt(Tcrypte,y)
-symbols;
-%symb ='abc';
-Tcrypte = char(lower(Tcrypte)); %Make sure it's a char array
-T_chap = '';
-for i=1: numel(Tcrypte)
-    index = strfind(y,Tcrypte(i));
-    T_chap = [T_chap symb(index)];
-end
+function [ Tdecrypt ] = decrypt( Tcrypte, key )
+
+    symbols;
+    Tcrypte = char(lower(Tcrypte));
+    Tdecrypt = '';
+
+    for i=1: numel(Tcrypte)
+        index = strfind(key,Tcrypte(i));
+        Tdecrypt = [Tdecrypt symb(index)];
+    end
+    
 end
 

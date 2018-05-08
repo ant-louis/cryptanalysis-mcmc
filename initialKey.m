@@ -26,7 +26,7 @@ function [ key ] = initialKey(Tcrypte,pinit,Q)
         %Echanger les deux lettres et les deux probas
         key([i index]) = key([index i]);
         ProbStatCrypte([i index]) = ProbStatCrypte([index i]);
-
     end
+    
 end
 

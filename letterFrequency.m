@@ -1,4 +1,4 @@
-%Fonction prenant en argument le texte crypte renvoyant la frequence
+%Fonction prenant en argument le texte crypte et renvoyant la frequence
 %d'apparition de chaque symbole dans ce texte
 
 function [frequency] = letterFrequency(Tcrypte)
@@ -14,6 +14,7 @@ function [frequency] = letterFrequency(Tcrypte)
         nb = length(strfind(Tcrypte,symb(i)));
         frequency(i) = nb/T_length;
     end
+    
 end
     
     
