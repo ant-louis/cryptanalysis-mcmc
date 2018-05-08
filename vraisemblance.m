@@ -1,6 +1,7 @@
-%[Q2_2] Fonction qui calcule la vraisemblance d'un texte T avec
-%une matrice de transition Q (de la langue anglaise)
-%ainsi qu'une distribution de probabilite intiale d'une lettre pi0
+%[Q2_2] Fonction prenant en arguments un texte crypte, la matrice de
+%transition Q, une loi de distribution initiale pi_0 et une cle d'encodage
+%et renvoyant la vraisemblance (dans la langue anglaise) de ce texte crypte
+%par rapport a la cle
 
 function [ P ] = vraisemblance(T, pinit, Q, symb)
 
